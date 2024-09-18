@@ -1,0 +1,28 @@
+Ôn tập kiến thức Js cơ bản
+1. Function
+    - khởi tạo hàm
+    - các kiểu hàm trong js
+    - arrow function
+    - default params
+2. Array
+    - khởi tạo mảng
+    - các phương thức xử lý mảng
+        cơ bản:
+            - length()
+            - push()
+            - pop()
+            - join()
+            - toString()
+            - concat()
+            - splice()
+            - indexOf()
+            - includes()
+        nâng cao:
+            - map
+            - filter
+            - find
+    - sự khác nhau giữa function và method
+3. Vòng lặp
+    - for
+    - foreach
+    - for of
