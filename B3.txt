@@ -1,4 +1,6 @@
-1. Template string
+1. import export
+    export
+    export default
 2. Destructuring Array
 3. Destructuring Object
 4. Spread Operator
