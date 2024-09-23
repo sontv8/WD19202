@@ -5,3 +5,16 @@
 3. Destructuring Object
 4. Spread Operator
 5. Rest Params
+
+
+Cài đặt react thông qua vite
+npm create vite@latest [tên thư mục] -- --template react
+
+Mở thư mục project
+cd [tên thư mục]
+
+cài node module
+npm i 
+
+Chạy project
+npm run dev

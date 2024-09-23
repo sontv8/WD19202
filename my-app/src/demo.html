@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const useState = (initialState) => {
+        let state = initialState;
+        const getState = () => {
+          return state;
+        };
+        const setState = (newValue) => {
+          state = newValue;
+        };
+
+        return [getState(), setState];
+      };
+
+      const [count, setCount] = useState(0); // [0, function]
+      setCount(10);
+      console.log(count);
+    </script>
+  </body>
+</html>
