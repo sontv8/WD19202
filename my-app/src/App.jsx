@@ -26,6 +26,18 @@ const productList = [
 
 function App() {
   const [products, setProducts] = useState(productList);
+
+  const onHandleRemove = (id) => {
+    // [1,2,3,4] => [1,2,3]
+    const newProductList = products.filter((item) => {
+      return item.id != id;
+      //        1        3 -> {SP1}
+      //        2        3 -> {SP2}
+      //        3        3 -> khong lay ra
+    });
+    setProducts(newProductList);
+  };
+
   return (
     <>
       <table>
@@ -40,14 +52,16 @@ function App() {
         <tbody>
           {products.map((product) => {
             return (
-              <tr>
+              <tr key={product.id}>
                 <td>
                   <img src={product.image} alt="" />
                 </td>
                 <td>{product.name}</td>
                 <td>{product.description}</td>
                 <td>
-                  <button>Xoa</button>
+                  <button onClick={() => onHandleRemove(product.id)}>
+                    Xoa
+                  </button>
                 </td>
               </tr>
             );
