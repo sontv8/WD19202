@@ -43,15 +43,19 @@ function App() {
     // console.log(e.target.name);
     // console.log(e.target.value);
     const { name, value } = e.target;
-    console.log(name, value);
 
-    setInputValue({ id: 4, name: value });
+    setInputValue({ ...inputValue, [name]: value, id: 4 });
+
+    // setInputValue({ id: 4, name: value });
   };
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
+    // console.log(inputValue);
+
     const newData = [...products, inputValue];
     setProducts(newData);
+    console.log(newData);
   };
 
   return (
@@ -63,10 +67,19 @@ function App() {
         B4: thêm sản phẩm vào mảng products
         B5: hiển thị lại danh sách sản phẩm
       */}
+      {JSON.stringify(inputValue)}
       <form onSubmit={onHandleSubmit}>
         <div className="form-group">
           <label htmlFor="">Tên sản phẩm</label>
           <input type="text" name="name" onInput={onHandleChange} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="">Ảnh sản phẩm</label>
+          <input type="text" name="image" onInput={onHandleChange} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="">Mô tả sản phẩm</label>
+          <input type="text" name="description" onInput={onHandleChange} />
         </div>
         <button>Submit</button>
       </form>

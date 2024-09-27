@@ -8,29 +8,13 @@
   <body>
     <div id="products"></div>
     <script>
-      const productList = [
-        {
-          id: 1,
-          name: "Product 1",
-          image: "https://picsum.photos/200/120",
-          description: "Desc 1",
-        },
-        {
-          id: 2,
-          name: "Product 2",
-          image: "https://picsum.photos/200/120",
-          description: "Desc 2",
-        },
-        {
-          id: 3,
-          name: "Product 3",
-          image: "https://picsum.photos/200/120",
-          description: "Desc 3",
-        },
-      ];
-      productList.map((product) => {
-        console.log(product.image);
-      });
+      const myName = "sontv";
+
+      const myInfo = {
+        [myName]: "Tan Van Son",
+        //sontv: "Tan Van Son"
+      };
+      console.log(myInfo.sontv);
     </script>
   </body>
 </html>
