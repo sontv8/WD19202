@@ -40,8 +40,12 @@ function App() {
   };
 
   const onHandleChange = (e) => {
+    // console.log(e.target.name);
     // console.log(e.target.value);
-    setInputValue({ id: 4, name: e.target.value });
+    const { name, value } = e.target;
+    console.log(name, value);
+
+    setInputValue({ id: 4, name: value });
   };
 
   const onHandleSubmit = (e) => {
