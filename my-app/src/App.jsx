@@ -26,6 +26,7 @@ const productList = [
 
 function App() {
   const [products, setProducts] = useState(productList);
+  const [inputValue, setInputValue] = useState({});
 
   const onHandleRemove = (id) => {
     // [1,2,3,4] => [1,2,3]
@@ -38,8 +39,33 @@ function App() {
     setProducts(newProductList);
   };
 
+  const onHandleChange = (e) => {
+    // console.log(e.target.value);
+    setInputValue({ id: 4, name: e.target.value });
+  };
+
+  const onHandleSubmit = (e) => {
+    e.preventDefault();
+    const newData = [...products, inputValue];
+    setProducts(newData);
+  };
+
   return (
     <>
+      {/* 
+        B1: tạo form thêm mới
+        B2: lấy giá trị nhập vào input trong form
+        B3: submit dữ liệu lấy được
+        B4: thêm sản phẩm vào mảng products
+        B5: hiển thị lại danh sách sản phẩm
+      */}
+      <form onSubmit={onHandleSubmit}>
+        <div className="form-group">
+          <label htmlFor="">Tên sản phẩm</label>
+          <input type="text" name="name" onInput={onHandleChange} />
+        </div>
+        <button>Submit</button>
+      </form>
       <table>
         <thead>
           <tr>
