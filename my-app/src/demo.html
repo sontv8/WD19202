@@ -8,13 +8,57 @@
   <body>
     <div id="products"></div>
     <script>
-      const myName = "sontv";
+      /*
+        Đồng bộ
+        Bất đồng bộ
+        Xử lý bất đồng bộ
+      */
 
-      const myInfo = {
-        [myName]: "Tan Van Son",
-        //sontv: "Tan Van Son"
-      };
-      console.log(myInfo.sontv);
+      const dbData = [1, 2, 3, 4];
+      console.log("Xin Chao");
+
+      const myPromise = new Promise((resolve, reject) => {
+        const myData = [...dbData];
+        if (myData.length > 0) {
+          resolve(myData);
+        } else {
+          reject("Khong co du lieu");
+        }
+      });
+
+      myPromise
+        .then((data) => {
+          const newData = data.map((item) => {
+            return item * 2;
+          });
+          return newData;
+        })
+        .then((data2) => {
+          console.log(data2);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      // const myPromise = new Promise((resolve, reject) => {
+      //   let flag = false;
+      //   if (flag == true) {
+      //     resolve("Thanh cong");
+      //   } else {
+      //     reject("That bai");
+      //   }
+      // });
+      // myPromise
+      //   .then((response) => {
+      //     let a = response + "abcd"; // Thanh congabcd
+      //     return a;
+      //   })
+      //   .then((data) => {
+      //     console.log(data);
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
     </script>
   </body>
 </html>

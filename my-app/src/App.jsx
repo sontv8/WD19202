@@ -29,33 +29,36 @@ function App() {
   const [inputValue, setInputValue] = useState({});
 
   const onHandleRemove = (id) => {
-    // [1,2,3,4] => [1,2,3]
     const newProductList = products.filter((item) => {
       return item.id != id;
-      //        1        3 -> {SP1}
-      //        2        3 -> {SP2}
-      //        3        3 -> khong lay ra
     });
     setProducts(newProductList);
   };
 
   const onHandleChange = (e) => {
-    // console.log(e.target.name);
-    // console.log(e.target.value);
+    // e.target.name lấy ra key theo thuộc tính name trong input
+    //e.target.value lấy ra giá trị nhập vào ô input
+    // const { name, value } = e.target;
+    // setInputValue({ ...inputValue, [name]: value, id: 4 });
+
+    // console.log(e.target.name, e.target.value);
     const { name, value } = e.target;
 
-    setInputValue({ ...inputValue, [name]: value, id: 4 });
-
-    // setInputValue({ id: 4, name: value });
+    setInputValue({ ...inputValue, [name]: value });
+    // computed property name
   };
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    // console.log(inputValue);
 
-    const newData = [...products, inputValue];
-    setProducts(newData);
+    const newProduct = { id: 4, ...inputValue };
+    const newData = [...products, newProduct];
     console.log(newData);
+    setProducts(newData);
+
+    // const newData = [...products, inputValue];
+    // setProducts(newData);
+    // console.log(newData);
   };
 
   return (
@@ -68,6 +71,7 @@ function App() {
         B5: hiển thị lại danh sách sản phẩm
       */}
       {JSON.stringify(inputValue)}
+
       <form onSubmit={onHandleSubmit}>
         <div className="form-group">
           <label htmlFor="">Tên sản phẩm</label>
@@ -83,6 +87,7 @@ function App() {
         </div>
         <button>Submit</button>
       </form>
+
       <table>
         <thead>
           <tr>
