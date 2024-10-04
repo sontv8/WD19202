@@ -12,38 +12,37 @@ function App() {
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.log(error));
-  });
+  }, [products]);
   const onHandleRemove = (id) => {
-    const newProductList = products.filter((item) => {
-      return item.id != id;
-    });
-    setProducts(newProductList);
+    if (confirm("Ban co muon xoa khong?") == true) {
+      fetch(`http://localhost:3000/products/${id}`, {
+        method: "DELETE",
+      });
+      const newProductList = products.filter((item) => {
+        return item.id != id;
+      });
+      setProducts(newProductList);
+    }
   };
 
   const onHandleChange = (e) => {
     // e.target.name lấy ra key theo thuộc tính name trong input
     //e.target.value lấy ra giá trị nhập vào ô input
-    // const { name, value } = e.target;
-    // setInputValue({ ...inputValue, [name]: value, id: 4 });
-
-    // console.log(e.target.name, e.target.value);
     const { name, value } = e.target;
-
     setInputValue({ ...inputValue, [name]: value });
-    // computed property name
   };
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
+    console.log(inputValue);
 
-    const newProduct = { id: 4, ...inputValue };
-    const newData = [...products, newProduct];
-    console.log(newData);
-    setProducts(newData);
-
-    // const newData = [...products, inputValue];
-    // setProducts(newData);
-    // console.log(newData);
+    fetch(`http://localhost:3000/products`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(inputValue),
+    });
   };
 
   return (

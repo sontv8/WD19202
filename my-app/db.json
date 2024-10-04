@@ -1,7 +1,28 @@
 {
   "products": [
-    { "id": "1", "name": "Product 1", "image": "...", "description": "Desc 1" },
-    { "id": "2", "name": "Product 2", "image": "...", "description": "Desc 2" },
-    { "id": "3", "name": "Product 3", "image": "...", "description": "Desc 3" }
+    {
+      "id": "1",
+      "name": "Product 1",
+      "image": "...",
+      "description": "Desc 1"
+    },
+    {
+      "id": "2",
+      "name": "Product 2",
+      "image": "...",
+      "description": "Desc 2"
+    },
+    {
+      "id": "4bb6",
+      "name": "New Product",
+      "image": "https://picsum.photos/200/200",
+      "description": "abcd"
+    },
+    {
+      "id": "6699",
+      "name": "New Product 2",
+      "image": "https://picsum.photos/200/200",
+      "description": "abcd"
+    }
   ]
 }
