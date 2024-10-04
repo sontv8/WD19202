@@ -1,33 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
-const productList = [
-  {
-    id: 1,
-    name: "Product 1",
-    image: "https://picsum.photos/200/120",
-    description: "Desc 1",
-  },
-  {
-    id: 2,
-    name: "Product 2",
-    image: "https://picsum.photos/200/120",
-    description: "Desc 2",
-  },
-  {
-    id: 3,
-    name: "Product 3",
-    image: "https://picsum.photos/200/120",
-    description: "Desc 3",
-  },
-];
-
 function App() {
-  const [products, setProducts] = useState(productList);
+  const [products, setProducts] = useState([]);
   const [inputValue, setInputValue] = useState({});
 
+  useEffect(() => {
+    fetch("http://localhost:3000/products")
+      .then((response) => response.json())
+      .then((data) => setProducts(data))
+      .catch((error) => console.log(error));
+  });
   const onHandleRemove = (id) => {
     const newProductList = products.filter((item) => {
       return item.id != id;
@@ -121,3 +106,10 @@ function App() {
 }
 
 export default App;
+/*
+  B1: cài đặt json-server: npm install json-server
+  B2: tạo file db.json và thêm dữ liệu vào
+  B3: chạy server: npx json-server db.json
+  B4: fetch data từ server
+  B5: set lại dữ liệu cho products 
+*/

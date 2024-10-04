@@ -14,31 +14,31 @@
         Xử lý bất đồng bộ
       */
 
-      const dbData = [1, 2, 3, 4];
-      console.log("Xin Chao");
+      // const dbData = [1, 2, 3, 4];
+      // console.log("Xin Chao");
 
-      const myPromise = new Promise((resolve, reject) => {
-        const myData = [...dbData];
-        if (myData.length > 0) {
-          resolve(myData);
-        } else {
-          reject("Khong co du lieu");
-        }
-      });
+      // const myPromise = new Promise((resolve, reject) => {
+      //   const myData = [...dbData];
+      //   if (myData.length > 0) {
+      //     resolve(myData);
+      //   } else {
+      //     reject("Khong co du lieu");
+      //   }
+      // });
 
-      myPromise
-        .then((data) => {
-          const newData = data.map((item) => {
-            return item * 2;
-          });
-          return newData;
-        })
-        .then((data2) => {
-          console.log(data2);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      // myPromise
+      //   .then((data) => {
+      //     const newData = data.map((item) => {
+      //       return item * 2;
+      //     });
+      //     return newData;
+      //   })
+      //   .then((data2) => {
+      //     console.log(data2);
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
 
       // const myPromise = new Promise((resolve, reject) => {
       //   let flag = false;
@@ -59,6 +59,11 @@
       //   .catch((error) => {
       //     console.log(error);
       //   });
+
+      fetch("http://localhost:3000/products")
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error));
     </script>
   </body>
 </html>
