@@ -7,26 +7,26 @@ import HomePage from "./pages/HomePage";
 import ProductList from "./pages/ProductList";
 
 function App() {
-  // const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   // const [inputValue, setInputValue] = useState({});
 
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/products")
-  //     .then((response) => response.json())
-  //     .then((data) => setProducts(data))
-  //     .catch((error) => console.log(error));
-  // }, []);
-  // const onHandleRemove = (id) => {
-  //   if (confirm("Ban co muon xoa khong?") == true) {
-  //     fetch(`http://localhost:3000/products/${id}`, {
-  //       method: "DELETE",
-  //     });
-  //     const newProductList = products.filter((item) => {
-  //       return item.id != id;
-  //     });
-  //     setProducts(newProductList);
-  //   }
-  // };
+  useEffect(() => {
+    fetch("http://localhost:3000/products")
+      .then((response) => response.json())
+      .then((data) => setProducts(data))
+      .catch((error) => console.log(error));
+  }, []);
+  const onHandleRemove = (id) => {
+    if (confirm("Ban co muon xoa khong?") == true) {
+      fetch(`http://localhost:3000/products/${id}`, {
+        method: "DELETE",
+      });
+      const newProductList = products.filter((item) => {
+        return item.id != id;
+      });
+      setProducts(newProductList);
+    }
+  };
 
   // const onHandleChange = (e) => {
   //   // e.target.name lấy ra key theo thuộc tính name trong input
@@ -76,39 +76,17 @@ function App() {
         <button>Submit</button>
       </form>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Desc</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product) => {
-            return (
-              <tr key={product.id}>
-                <td>
-                  <img src={product.image} alt="" />
-                </td>
-                <td>{product.name}</td>
-                <td>{product.description}</td>
-                <td>
-                  <button onClick={() => onHandleRemove(product.id)}>
-                    Xoa
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table> */}
+       */}
 
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
         <Route path="/admin" element={<HomePage />} />
-        <Route path="/admin/products" element={<ProductList />} />
+        <Route
+          path="/admin/products"
+          element={
+            <ProductList products={products} onHandleRemove={onHandleRemove} />
+          }
+        />
       </Routes>
     </>
   );
