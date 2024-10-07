@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/HomePage";
 import ProductList from "./pages/ProductList";
+import ProductAdd from "./pages/ProductAdd";
 
 function App() {
   const [products, setProducts] = useState([]);
-  // const [inputValue, setInputValue] = useState({});
+  const [inputValue, setInputValue] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:3000/products")
@@ -28,27 +30,28 @@ function App() {
     }
   };
 
-  // const onHandleChange = (e) => {
-  //   // e.target.name lấy ra key theo thuộc tính name trong input
-  //   //e.target.value lấy ra giá trị nhập vào ô input
-  //   const { name, value } = e.target;
-  //   setInputValue({ ...inputValue, [name]: value });
-  // };
+  const onHandleChange = (e) => {
+    // e.target.name lấy ra key theo thuộc tính name trong input
+    //e.target.value lấy ra giá trị nhập vào ô input
+    const { name, value } = e.target;
+    setInputValue({ ...inputValue, [name]: value });
+  };
 
-  // const onHandleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // console.log(inputValue);
+  const onHandleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(inputValue);
 
-  //   fetch(`http://localhost:3000/products`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(inputValue),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => setProducts([...products, data]));
-  // };
+    fetch(`http://localhost:3000/products`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(inputValue),
+    })
+      .then((response) => response.json())
+      .then((data) => setProducts([...products, data]))
+      .then(() => navigate("/admin/products"));
+  };
 
   return (
     <>
@@ -60,24 +63,6 @@ function App() {
         B5: hiển thị lại danh sách sản phẩm
       */}
 
-      {/* <form onSubmit={onHandleSubmit}>
-        <div className="form-group">
-          <label htmlFor="">Tên sản phẩm</label>
-          <input type="text" name="name" onInput={onHandleChange} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="">Ảnh sản phẩm</label>
-          <input type="text" name="image" onInput={onHandleChange} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="">Mô tả sản phẩm</label>
-          <input type="text" name="description" onInput={onHandleChange} />
-        </div>
-        <button>Submit</button>
-      </form>
-
-       */}
-
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
         <Route path="/admin" element={<HomePage />} />
@@ -85,6 +70,15 @@ function App() {
           path="/admin/products"
           element={
             <ProductList products={products} onHandleRemove={onHandleRemove} />
+          }
+        />
+        <Route
+          path="/admin/products/add"
+          element={
+            <ProductAdd
+              onHandleChange={onHandleChange}
+              onHandleSubmit={onHandleSubmit}
+            />
           }
         />
       </Routes>
