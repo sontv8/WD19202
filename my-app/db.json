@@ -23,6 +23,42 @@
       "name": "New Product 2",
       "image": "https://picsum.photos/200/200",
       "description": "abcd"
+    },
+    {
+      "id": "0d69",
+      "name": "New Product 2",
+      "image": "https://picsum.photos/200/200",
+      "description": "abcd"
+    },
+    {
+      "id": "fedd",
+      "name": "New Product",
+      "image": "https://picsum.photos/200/200",
+      "description": "abcd"
+    },
+    {
+      "id": "607a",
+      "name": "New Product 10",
+      "image": "https://picsum.photos/200/200",
+      "description": "hhhhh"
+    },
+    {
+      "id": "19b0",
+      "name": "New Product 11",
+      "image": "https://picsum.photos/200/200",
+      "description": "gggg"
+    },
+    {
+      "id": "8b53",
+      "name": "New Product 12",
+      "image": "https://picsum.photos/200/200",
+      "description": "yyyyyy"
+    },
+    {
+      "id": "1ff6",
+      "name": "New Product 13",
+      "image": "https://picsum.photos/200/200",
+      "description": "iiiii"
     }
   ]
 }
