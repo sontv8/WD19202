@@ -6,7 +6,7 @@ const ProductUpdate = ({ products, onHandleUpdate }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const currentProduct = products.find((item) => item.id == id);
-  console.log(currentProduct);
+  //   console.log(currentProduct);
 
   const onHandleChange = (e) => {
     const { name, value } = e.target;

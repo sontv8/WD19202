@@ -37,6 +37,9 @@ const ProductList = (props) => {
                   <Link to={`/admin/products/${product.id}/update`}>
                     <button>Cập nhật</button>
                   </Link>
+                  <Link to={`/admin/products/${product.id}`}>
+                    <button>Chi tiết</button>
+                  </Link>
                 </td>
               </tr>
             );

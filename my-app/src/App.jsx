@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import ProductList from "./pages/ProductList";
 import ProductAdd from "./pages/ProductAdd";
 import ProductUpdate from "./pages/ProductUpdate";
+import ProductDetail from "./pages/ProductDetail";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -63,7 +64,9 @@ function App() {
       body: JSON.stringify(product),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) =>
+        setProducts(products.map((item) => (item.id == data.id ? data : item)))
+      )
       .then(() => navigate("/admin/products"));
   };
   return (
@@ -102,6 +105,10 @@ function App() {
               onHandleUpdate={onHandleUpdate}
             />
           }
+        />
+        <Route
+          path="/admin/products/:id"
+          element={<ProductDetail products={products} />}
         />
       </Routes>
     </>
