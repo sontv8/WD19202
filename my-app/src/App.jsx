@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/HomePage";
 import ProductList from "./pages/ProductList";
 import ProductAdd from "./pages/ProductAdd";
+import ProductUpdate from "./pages/ProductUpdate";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -53,6 +52,20 @@ function App() {
       .then(() => navigate("/admin/products"));
   };
 
+  const onHandleUpdate = (product) => {
+    // console.log("App:", product);
+
+    fetch(`http://localhost:3000/products/${product.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .then(() => navigate("/admin/products"));
+  };
   return (
     <>
       {/* 
@@ -78,6 +91,15 @@ function App() {
             <ProductAdd
               onHandleChange={onHandleChange}
               onHandleSubmit={onHandleSubmit}
+            />
+          }
+        />
+        <Route
+          path="/admin/products/:id/update"
+          element={
+            <ProductUpdate
+              products={products}
+              onHandleUpdate={onHandleUpdate}
             />
           }
         />

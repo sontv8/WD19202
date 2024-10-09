@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ProductList = (props) => {
   //   console.log("Product List:", props.products);
   const { products, onHandleRemove } = props;
-  console.log(props);
+  // console.log(props);
 
   return (
     <div>
@@ -30,6 +31,12 @@ const ProductList = (props) => {
                   <button onClick={() => onHandleRemove(product.id)}>
                     Xoa
                   </button>
+                  {/* <a href={`/admin/products/${product.id}/update`}>
+                    <button>Cập nhật</button>
+                  </a> */}
+                  <Link to={`/admin/products/${product.id}/update`}>
+                    <button>Cập nhật</button>
+                  </Link>
                 </td>
               </tr>
             );

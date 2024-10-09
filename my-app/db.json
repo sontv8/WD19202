@@ -1,10 +1,10 @@
 {
   "products": [
     {
+      "name": "Product 1 update",
+      "image": "bacd",
       "id": "1",
-      "name": "Product 1",
-      "image": "...",
-      "description": "Desc 1"
+      "description": "hhhh"
     },
     {
       "id": "2",
@@ -50,9 +50,9 @@
     },
     {
       "id": "8b53",
-      "name": "New Product 12",
-      "image": "https://picsum.photos/200/200",
-      "description": "yyyyyy"
+      "name": "New Product 12 abcd",
+      "image": "https://picsum.photos/200/100",
+      "description": "bbbb"
     }
   ]
 }
