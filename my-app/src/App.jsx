@@ -6,10 +6,12 @@ import ProductList from "./pages/ProductList";
 import ProductAdd from "./pages/ProductAdd";
 import ProductUpdate from "./pages/ProductUpdate";
 import ProductDetail from "./pages/ProductDetail";
+import { productSchema } from "./schema/Product";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [inputValue, setInputValue] = useState({});
+  const [errorList, setErrorList] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,6 +42,12 @@ function App() {
   const onHandleSubmit = (e) => {
     e.preventDefault();
     // console.log(inputValue);
+
+    const { error } = productSchema.validate(inputValue, { abortEarly: false });
+    if (error) {
+      setErrorList(error.details);
+      return;
+    }
 
     fetch(`http://localhost:3000/products`, {
       method: "POST",
@@ -94,6 +102,7 @@ function App() {
             <ProductAdd
               onHandleChange={onHandleChange}
               onHandleSubmit={onHandleSubmit}
+              errors={errorList}
             />
           }
         />
@@ -122,4 +131,9 @@ export default App;
   B3: chạy server: npx json-server db.json
   B4: fetch data từ server
   B5: set lại dữ liệu cho products 
+*/
+
+/*
+  Validate:
+    cài đặt thư viện joi: npm i joi
 */
